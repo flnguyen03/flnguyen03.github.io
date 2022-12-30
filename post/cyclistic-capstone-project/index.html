@@ -1,0 +1,292 @@
+<!DOCTYPE html>
+<html lang="en-us">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    
+    <title>Google Data Analytics Capstone: Cyclistic Bike Share | Home</title>
+    <meta name="viewport" content="width=device-width,minimum-scale=1">
+    <meta name="description" content="Preface: I&rsquo;ll be presenting my data analysis to a big audience. Several people present are, Lily Moreno: the director of marketing and my manager over at a fictious company named, Cyclistic including the marketing analystics team and the executive team. For detail context of the capstone case study including steps of the data preparations, please follow this Github link.
+Background: &ldquo;How do annual members and casual riders use Cyclistic bikes differently?">
+    <meta name="generator" content="Hugo 0.105.0">
+    
+    
+    
+    
+      <meta name="robots" content="noindex, nofollow">
+    
+
+    
+<link rel="stylesheet" href="https://flnguyen03.github.io/ananke/css/main.min.css" >
+
+
+
+    
+    
+    
+      
+
+    
+
+    
+    
+    <meta property="og:title" content="Google Data Analytics Capstone: Cyclistic Bike Share" />
+<meta property="og:description" content="Preface: I&rsquo;ll be presenting my data analysis to a big audience. Several people present are, Lily Moreno: the director of marketing and my manager over at a fictious company named, Cyclistic including the marketing analystics team and the executive team. For detail context of the capstone case study including steps of the data preparations, please follow this Github link.
+Background: &ldquo;How do annual members and casual riders use Cyclistic bikes differently?" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://flnguyen03.github.io/post/cyclistic-capstone-project/" /><meta property="article:section" content="post" />
+<meta property="article:published_time" content="2022-10-27T10:58:08-04:00" />
+<meta property="article:modified_time" content="2022-10-27T10:58:08-04:00" /><meta property="og:site_name" content="Home" />
+
+<meta itemprop="name" content="Google Data Analytics Capstone: Cyclistic Bike Share">
+<meta itemprop="description" content="Preface: I&rsquo;ll be presenting my data analysis to a big audience. Several people present are, Lily Moreno: the director of marketing and my manager over at a fictious company named, Cyclistic including the marketing analystics team and the executive team. For detail context of the capstone case study including steps of the data preparations, please follow this Github link.
+Background: &ldquo;How do annual members and casual riders use Cyclistic bikes differently?"><meta itemprop="datePublished" content="2022-10-27T10:58:08-04:00" />
+<meta itemprop="dateModified" content="2022-10-27T10:58:08-04:00" />
+<meta itemprop="wordCount" content="603">
+<meta itemprop="keywords" content="capstone,case-study," /><meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="Google Data Analytics Capstone: Cyclistic Bike Share"/>
+<meta name="twitter:description" content="Preface: I&rsquo;ll be presenting my data analysis to a big audience. Several people present are, Lily Moreno: the director of marketing and my manager over at a fictious company named, Cyclistic including the marketing analystics team and the executive team. For detail context of the capstone case study including steps of the data preparations, please follow this Github link.
+Background: &ldquo;How do annual members and casual riders use Cyclistic bikes differently?"/>
+
+	
+  </head>
+
+  <body class="ma0 avenir bg-near-white">
+
+    
+   
+  
+
+  
+  <header class="cover bg-top" style="background-image: url('https://flnguyen03.github.io/images/notebook.jpg');">
+    <div class="bg-black-60">
+      <nav class="pv3 ph3 ph4-ns" role="navigation">
+  <div class="flex-l justify-between items-center center">
+    <a href="https://flnguyen03.github.io/" class="f3 fw2 hover-white no-underline white-90 dib">
+      
+        Home
+      
+    </a>
+    <div class="flex-l items-center">
+      
+
+      
+        <ul class="pl0 mr3">
+          
+          <li class="list f5 f4-ns fw4 dib pr3">
+            <a class="hover-white no-underline white-90" href="https://flnguyen03.github.io/about/" title="About page">
+              About
+            </a>
+          </li>
+          
+          <li class="list f5 f4-ns fw4 dib pr3">
+            <a class="hover-white no-underline white-90" href="https://flnguyen03.github.io/post/" title="Articles page">
+              Articles
+            </a>
+          </li>
+          
+          <li class="list f5 f4-ns fw4 dib pr3">
+            <a class="hover-white no-underline white-90" href="https://flnguyen03.github.io/contact/" title="Resume page">
+              Resume
+            </a>
+          </li>
+          
+        </ul>
+      
+      
+<div class="ananke-socials">
+  
+    <a href="https://www.linkedin.com/in/flnguyen03" target="_blank" class="LinkedIn ananke-social-link link-transition stackoverflow link dib z-999 pt3 pt0-l mr1" title="LinkedIn link" rel="noopener" aria-label="follow on LinkedIn——Opens in a new window">
+      
+        <span class="icon"><svg style="enable-background:new 0 0 65 65;" version="1.1" viewBox="0 0 65 65"  xml:space="preserve" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+  <path d="M50.837,48.137V36.425c0-6.275-3.35-9.195-7.816-9.195  c-3.604,0-5.219,1.983-6.119,3.374V27.71h-6.79c0.09,1.917,0,20.427,0,20.427h6.79V36.729c0-0.609,0.044-1.219,0.224-1.655  c0.49-1.22,1.607-2.483,3.482-2.483c2.458,0,3.44,1.873,3.44,4.618v10.929H50.837z M22.959,24.922c2.367,0,3.842-1.57,3.842-3.531  c-0.044-2.003-1.475-3.528-3.797-3.528s-3.841,1.524-3.841,3.528c0,1.961,1.474,3.531,3.753,3.531H22.959z M34,64  C17.432,64,4,50.568,4,34C4,17.431,17.432,4,34,4s30,13.431,30,30C64,50.568,50.568,64,34,64z M26.354,48.137V27.71h-6.789v20.427  H26.354z" style="fill-rule:evenodd;clip-rule:evenodd;"/>
+</svg>
+</span>
+      
+<span class="new-window"><svg  height="8px"  style="enable-background:new 0 0 1000 1000;" version="1.1" viewBox="0 0 1000 1000"  xml:space="preserve" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" >
+<path d="M598 128h298v298h-86v-152l-418 418-60-60 418-418h-152v-86zM810 810v-298h86v298c0 46-40 86-86 86h-596c-48 0-86-40-86-86v-596c0-46 38-86 86-86h298v86h-298v596h596z" style="fill-rule:evenodd;clip-rule:evenodd;"/>
+</svg>
+</span></a>
+  
+    <a href="https://github.com/flnguyen03" target="_blank" class="Github ananke-social-link link-transition stackoverflow link dib z-999 pt3 pt0-l mr1" title="Github link" rel="noopener" aria-label="follow on Github——Opens in a new window">
+      
+        <span class="icon"><svg style="enable-background:new 0 0 512 512;" version="1.1" viewBox="0 0 512 512"  xml:space="preserve" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" >
+  <path d="M256,32C132.3,32,32,134.8,32,261.7c0,101.5,64.2,187.5,153.2,217.9c11.2,2.1,15.3-5,15.3-11.1   c0-5.5-0.2-19.9-0.3-39.1c-62.3,13.9-75.5-30.8-75.5-30.8c-10.2-26.5-24.9-33.6-24.9-33.6c-20.3-14.3,1.5-14,1.5-14   c22.5,1.6,34.3,23.7,34.3,23.7c20,35.1,52.4,25,65.2,19.1c2-14.8,7.8-25,14.2-30.7c-49.7-5.8-102-25.5-102-113.5   c0-25.1,8.7-45.6,23-61.6c-2.3-5.8-10-29.2,2.2-60.8c0,0,18.8-6.2,61.6,23.5c17.9-5.1,37-7.6,56.1-7.7c19,0.1,38.2,2.6,56.1,7.7   c42.8-29.7,61.5-23.5,61.5-23.5c12.2,31.6,4.5,55,2.2,60.8c14.3,16.1,23,36.6,23,61.6c0,88.2-52.4,107.6-102.3,113.3   c8,7.1,15.2,21.1,15.2,42.5c0,30.7-0.3,55.5-0.3,63c0,6.1,4,13.3,15.4,11C415.9,449.1,480,363.1,480,261.7   C480,134.8,379.7,32,256,32z"/>
+</svg>
+</span>
+      
+<span class="new-window"><svg  height="8px"  style="enable-background:new 0 0 1000 1000;" version="1.1" viewBox="0 0 1000 1000"  xml:space="preserve" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" >
+<path d="M598 128h298v298h-86v-152l-418 418-60-60 418-418h-152v-86zM810 810v-298h86v298c0 46-40 86-86 86h-596c-48 0-86-40-86-86v-596c0-46 38-86 86-86h298v86h-298v596h596z" style="fill-rule:evenodd;clip-rule:evenodd;"/>
+</svg>
+</span></a>
+  
+</div>
+
+    </div>
+  </div>
+</nav>
+
+      <div class="tc-l pv6 ph3 ph4-ns">
+        
+          <h1 class="f2 f1-l fw2 white-90 mb0 lh-title">Google Data Analytics Capstone: Cyclistic Bike Share</h1>
+          
+        
+      </div>
+    </div>
+  </header>
+
+
+
+    <main class="pb7" role="main">
+      
+  
+  <article class="flex-l flex-wrap justify-between mw8 center ph3">
+    <header class="mt4 w-100">
+      <aside class="instapaper_ignoref b helvetica tracked">
+          
+        ARTICLES
+      </aside>
+      
+
+
+
+
+
+
+
+
+
+
+  <div id="sharing" class="mt3 ananke-socials">
+    
+  </div>
+
+
+      <h1 class="f1 athelas mt3 mb1">Google Data Analytics Capstone: Cyclistic Bike Share</h1>
+      
+      
+      
+      <time class="f6 mv4 dib tracked" datetime="2022-10-27T10:58:08-04:00">October 27, 2022</time>
+      
+
+      
+      
+    </header>
+    <div class="nested-copy-line-height lh-copy serif f4 nested-links mid-gray pr4-l w-two-thirds-l"><p><img src="https://flnguyen03.github.io/images/cyclistic_bike_share_slides/Cyclistic_Bike_Share.jpg" alt="cyclistic_logo"></p>
+<h2 id="preface">Preface:</h2>
+<p>I&rsquo;ll be presenting my data analysis to a big audience. Several people present are, <strong>Lily Moreno:</strong> the director of marketing and my manager over at a fictious company named, Cyclistic including the marketing analystics team and the executive team. For detail context of the capstone case study including steps of the data preparations, please follow this <a href="https://github.com/flnguyen03/google_capstone_cyclistic/blob/main/cyclist_bike_share%20(12NOV2022).ipynb">Github link</a>.</p>
+<p><em>Background:</em> &ldquo;How do annual members and casual riders use Cyclistic bikes differently?&rdquo;.</p>
+<p>We will take a look at a Power BI dashboard I develop using Calendar Year 2021 data, <a href="https://divvy-tripdata.s3.amazonaws.com/index.html">Cyclistic Bike Share Data</a>. I choose to isolate my analysis to Calendar Year 2021 to observe a one-year trend initial as the Calendar Year 2022 hasn&rsquo;t completed yet.</p>
+<h2 id="presentation">Presentation:</h2>
+<p><em>Opening remarks:</em> Greetings director Ms. Moreno, folks in the marketing analystics team, and the executive team.</p>
+<p><em>Slogan:</em> &ldquo;We aim to provide customers eco-friendly alternative access to transportation.&rdquo;</p>
+<p>(slide #0) <img src="https://flnguyen03.github.io/images/cyclistic_bike_share_slides/0_Strategic_planning.png" alt="slide_0"></p>
+<p><em>Slide #1:</em> First slide, we will observe the different ride types our company offers and membership usage for the Calendar Year 2021.</p>
+<p>(slide #1) <img src="https://flnguyen03.github.io/images/cyclistic_bike_share_slides/1_2_Membership_total.PNG" alt="slide_1"></p>
+<p>Observe that with the different &ldquo;ride types&rdquo;, casual riders consist ~45% versus ~55% annual membership riders.</p>
+<p><em>Slide #2:</em> Moving to the second slide, I will filter our &ldquo;ride types&rdquo; to focus mainly on electric and classic bikes when observing trends between casual versus member riders.</p>
+<p>(slide #2) <img src="https://flnguyen03.github.io/images/cyclistic_bike_share_slides/2_Membership_minus_docked_bike.png" alt="slide_2"></p>
+<ul>
+<li>Notice that member riders have a greater number of rides compared to casual riders (top-right visual)</li>
+<li>In contrast, casual riders spent more time on bikes than member riders (bottom-left visual)</li>
+<li>Member and casual riders have their peak usage of our service during the summer months June to September</li>
+<li>Members have their peak usage during the early morning (morning work rush hour) and early evening (evening work rush hour)</li>
+<li>Causal riders have continuous increase of usage from sunrise to peaking near sunset time</li>
+</ul>
+<p>(slide #2.2) <img src="https://flnguyen03.github.io/images/cyclistic_bike_share_slides/2_2_Membership_minus_docked_bike_daliy.png" alt="slide_2_2"></p>
+<ul>
+<li>Casual riders use Cyclistic bikes more on Saturday and Sunday than during the weekdays</li>
+<li>Annual members constantly ride daliy while teetering usage down on Sunday</li>
+</ul>
+<p><em>Slide #3:</em> Next slide, I&rsquo;ve broken out the monthly aggregate average of ride distance (meters) and ride time (seconds) of each rider type.</p>
+<p>(slide #3) <img src="https://flnguyen03.github.io/images/cyclistic_bike_share_slides/3_Membership_monthly_avg.png" alt="slide_3"></p>
+<p>Across the months, the average ride distance do not vary significantly in the rider types. Though the average ride time do significantly vary between the casual and member riders, at most double the average ride time. Casual riders are leisurely using the bicycles versus members utilizing the bicycles to get to their location quickly.</p>
+<p><em>Slide #4:</em> The following slide, I adjust our focus to the summer months to observe any aggregate average trends.</p>
+<p>(slide #4) <img src="https://flnguyen03.github.io/images/cyclistic_bike_share_slides/4_Membership_summer_monthly_avg.png" alt="slide_4"></p>
+<p>Members are spending half the average time on the bicycles compared to the causal riders. Interestly, I see that the average ride time decrease for the casual riders during the summer than other months.</p>
+<p><em>Slide #5:</em> Slide 5, I look at some station usage to see where casual and members are riding bicycles.</p>
+<p>(slide #5) <img src="https://flnguyen03.github.io/images/cyclistic_bike_share_slides/5_Chicago_Map_total.png" alt="slide_5"></p>
+<p>(slide #6) <img src="https://flnguyen03.github.io/images/cyclistic_bike_share_slides/6_Chicago_Map_top_10.png" alt="slide_6"></p>
+<p>The top 10 Stations are close to popular landmarks and near the Chicago waterfront.</p>
+<p><em>Slide #7:</em> Last slide, I further investigate the bottom list station usage among the casual and member riders.</p>
+<p>(slide #7) <img src="https://flnguyen03.github.io/images/cyclistic_bike_share_slides/7_Chicago_Map_bottom_10.png" alt="slide_7"></p>
+<p>The bottom ten stations are further away from the Chicago waterfront and popular landmarks.</p>
+<h2 id="conclusion">Conclusion:</h2>
+<h3 id="recommendations">Recommendations</h3>
+<ol>
+<li>
+<p>Marketing team should advertise incentives of annual membership passes for casual riders beginning of the summer, ideally during the months of April or May.</p>
+</li>
+<li>
+<p>Target higher 11-25% discounts in the bottom station locations to encourage casual riders in those area to get annual memberships.</p>
+</li>
+<li>
+<p>Alternatively, target higher 11-25% discounts in the top station locations to encourage casual riders in those areas to be encouraged to convert to an annual membership.</p>
+</li>
+</ol>
+<ul class="pa0">
+  
+   <li class="list di">
+     <a href="https://flnguyen03.github.io/tags/capstone" class="link f5 grow no-underline br-pill ba ph3 pv2 mb2 dib black sans-serif">capstone</a>
+   </li>
+  
+   <li class="list di">
+     <a href="https://flnguyen03.github.io/tags/case-study" class="link f5 grow no-underline br-pill ba ph3 pv2 mb2 dib black sans-serif">case-study</a>
+   </li>
+  
+</ul>
+<div class="mt6 instapaper_ignoref">
+      
+      
+      </div>
+    </div>
+
+    <aside class="w-30-l mt6-l">
+
+
+
+
+</aside>
+
+  </article>
+
+    </main>
+    <footer class="bg-black bottom-0 w-100 pa3" role="contentinfo">
+  <div class="flex justify-between">
+  <a class="f4 fw4 hover-white no-underline white-70 dn dib-ns pv2 ph3" href="https://flnguyen03.github.io/" >
+    &copy;  Home 2022 
+  </a>
+    <div>
+<div class="ananke-socials">
+  
+    <a href="https://www.linkedin.com/in/flnguyen03" target="_blank" class="LinkedIn ananke-social-link link-transition stackoverflow link dib z-999 pt3 pt0-l mr1" title="LinkedIn link" rel="noopener" aria-label="follow on LinkedIn——Opens in a new window">
+      
+        <span class="icon"><svg style="enable-background:new 0 0 65 65;" version="1.1" viewBox="0 0 65 65"  xml:space="preserve" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+  <path d="M50.837,48.137V36.425c0-6.275-3.35-9.195-7.816-9.195  c-3.604,0-5.219,1.983-6.119,3.374V27.71h-6.79c0.09,1.917,0,20.427,0,20.427h6.79V36.729c0-0.609,0.044-1.219,0.224-1.655  c0.49-1.22,1.607-2.483,3.482-2.483c2.458,0,3.44,1.873,3.44,4.618v10.929H50.837z M22.959,24.922c2.367,0,3.842-1.57,3.842-3.531  c-0.044-2.003-1.475-3.528-3.797-3.528s-3.841,1.524-3.841,3.528c0,1.961,1.474,3.531,3.753,3.531H22.959z M34,64  C17.432,64,4,50.568,4,34C4,17.431,17.432,4,34,4s30,13.431,30,30C64,50.568,50.568,64,34,64z M26.354,48.137V27.71h-6.789v20.427  H26.354z" style="fill-rule:evenodd;clip-rule:evenodd;"/>
+</svg>
+</span>
+      
+<span class="new-window"><svg  height="8px"  style="enable-background:new 0 0 1000 1000;" version="1.1" viewBox="0 0 1000 1000"  xml:space="preserve" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" >
+<path d="M598 128h298v298h-86v-152l-418 418-60-60 418-418h-152v-86zM810 810v-298h86v298c0 46-40 86-86 86h-596c-48 0-86-40-86-86v-596c0-46 38-86 86-86h298v86h-298v596h596z" style="fill-rule:evenodd;clip-rule:evenodd;"/>
+</svg>
+</span></a>
+  
+    <a href="https://github.com/flnguyen03" target="_blank" class="Github ananke-social-link link-transition stackoverflow link dib z-999 pt3 pt0-l mr1" title="Github link" rel="noopener" aria-label="follow on Github——Opens in a new window">
+      
+        <span class="icon"><svg style="enable-background:new 0 0 512 512;" version="1.1" viewBox="0 0 512 512"  xml:space="preserve" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" >
+  <path d="M256,32C132.3,32,32,134.8,32,261.7c0,101.5,64.2,187.5,153.2,217.9c11.2,2.1,15.3-5,15.3-11.1   c0-5.5-0.2-19.9-0.3-39.1c-62.3,13.9-75.5-30.8-75.5-30.8c-10.2-26.5-24.9-33.6-24.9-33.6c-20.3-14.3,1.5-14,1.5-14   c22.5,1.6,34.3,23.7,34.3,23.7c20,35.1,52.4,25,65.2,19.1c2-14.8,7.8-25,14.2-30.7c-49.7-5.8-102-25.5-102-113.5   c0-25.1,8.7-45.6,23-61.6c-2.3-5.8-10-29.2,2.2-60.8c0,0,18.8-6.2,61.6,23.5c17.9-5.1,37-7.6,56.1-7.7c19,0.1,38.2,2.6,56.1,7.7   c42.8-29.7,61.5-23.5,61.5-23.5c12.2,31.6,4.5,55,2.2,60.8c14.3,16.1,23,36.6,23,61.6c0,88.2-52.4,107.6-102.3,113.3   c8,7.1,15.2,21.1,15.2,42.5c0,30.7-0.3,55.5-0.3,63c0,6.1,4,13.3,15.4,11C415.9,449.1,480,363.1,480,261.7   C480,134.8,379.7,32,256,32z"/>
+</svg>
+</span>
+      
+<span class="new-window"><svg  height="8px"  style="enable-background:new 0 0 1000 1000;" version="1.1" viewBox="0 0 1000 1000"  xml:space="preserve" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" >
+<path d="M598 128h298v298h-86v-152l-418 418-60-60 418-418h-152v-86zM810 810v-298h86v298c0 46-40 86-86 86h-596c-48 0-86-40-86-86v-596c0-46 38-86 86-86h298v86h-298v596h596z" style="fill-rule:evenodd;clip-rule:evenodd;"/>
+</svg>
+</span></a>
+  
+</div>
+</div>
+  </div>
+</footer>
+
+  </body>
+</html>
